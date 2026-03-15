@@ -1,14 +1,20 @@
 import { toPng } from 'html-to-image';
 
+// Safari and iOS have a known bug where `html-to-image` returns a blank canvas on the first pass
+// Generating the image multiple times forces the browser to fully render external assets (like images)
+const generateImageSafely = async (element: HTMLElement) => {
+  const options = { quality: 1.0, pixelRatio: 2, cacheBust: true };
+  await toPng(element, options);
+  await toPng(element, options);
+  return await toPng(element, options);
+};
+
 export async function exportCardToPng(elementId: string, filename: string) {
   const element = document.getElementById(elementId);
   if (!element) return;
 
   try {
-    const dataUrl = await toPng(element, {
-      quality: 1.0,
-      pixelRatio: 2, // High resolution
-    });
+    const dataUrl = await generateImageSafely(element);
 
     const link = document.createElement('a');
     link.download = filename;
@@ -25,10 +31,7 @@ export async function shareCardImage(elementId: string, filename: string, title:
   if (!element) return;
 
   try {
-    const dataUrl = await toPng(element, {
-      quality: 1.0,
-      pixelRatio: 2,
-    });
+    const dataUrl = await generateImageSafely(element);
 
     // Convert dataUrl to File
     const blob = await (await fetch(dataUrl)).blob();
