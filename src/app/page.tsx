@@ -11,7 +11,6 @@ export default function Home() {
   const [vehicleNumber, setVehicleNumber] = useState('');
   const [qrCodeUrl, setQrCodeUrl] = useState<string | null>(null);
   const [isExporting, setIsExporting] = useState(false);
-  const [walletLoading, setWalletLoading] = useState<'apple' | 'google' | null>(null);
 
   const cardId = 'fuel-pass-card';
 
