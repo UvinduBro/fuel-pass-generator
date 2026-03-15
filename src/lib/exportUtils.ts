@@ -1,11 +1,18 @@
 import { toPng } from 'html-to-image';
 
 // Safari and iOS have a known bug where `html-to-image` returns a blank canvas on the first pass
-// Generating the image multiple times forces the browser to fully render external assets (like images)
+// Generating the image multiple times forces the browser to fully render external assets
+// Note: cacheBust is NOT used here as it breaks blob/data URLs from file uploads
 const generateImageSafely = async (element: HTMLElement) => {
-  const options = { quality: 1.0, pixelRatio: 2, cacheBust: true };
-  await toPng(element, options);
-  await toPng(element, options);
+  const options = { quality: 1.0, pixelRatio: 2 };
+  
+  // First pass to trigger asset loading (we ignore any errors here)
+  await toPng(element, options).catch(() => {});
+  
+  // Brief pause to allow the browser to paint
+  await new Promise(resolve => setTimeout(resolve, 150));
+  
+  // Final pass to capture the actual image
   return await toPng(element, options);
 };
 
