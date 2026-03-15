@@ -31,7 +31,8 @@ export default function Home() {
   const handleDownload = async () => {
     setIsExporting(true);
     try {
-      await exportCardToPng(cardId, `fuel-pass-${vehicleNumber || 'card'}.png`);
+      const sanitizedNumber = (vehicleNumber || 'card').replace(/\s+/g, '-').toUpperCase();
+      await exportCardToPng(cardId, `fuel-pass-${sanitizedNumber}.png`);
     } finally {
       setIsExporting(false);
     }
@@ -40,7 +41,8 @@ export default function Home() {
   const handleShare = async () => {
     setIsExporting(true);
     try {
-      await shareCardImage(cardId, `fuel-pass-${vehicleNumber || 'card'}.png`, 'My Fuel Pass');
+      const sanitizedNumber = (vehicleNumber || 'card').replace(/\s+/g, '-').toUpperCase();
+      await shareCardImage(cardId, `fuel-pass-${sanitizedNumber}.png`, 'My Fuel Pass');
     } catch (err) {
        alert(err instanceof Error ? err.message : 'Share failed');
     } finally {
