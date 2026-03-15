@@ -1,0 +1,61 @@
+export type Language = 'en' | 'si' | 'ta';
+
+export const translations = {
+  en: {
+    title: "Fuel Pass Generator",
+    subtitle: "Create your digital fuel pass instantly",
+    vehicleLabel: "Vehicle Number",
+    vehiclePlaceholder: "e.g. WP CAA 1234",
+    qrLabel: "QR Code Image",
+    clickToUpload: "Click to upload",
+    dragDrop: "or drag and drop",
+    supportedFormats: "PNG, JPG or JPEG",
+    downloadBtn: "Download Pass (PNG)",
+    shareBtn: "Share Pass",
+    digitalWallets: "Digital Wallets (Unavailable)",
+    appleWallet: "Add to Apple Wallet",
+    googleWallet: "Add to Google Wallet",
+    previewText: "Live preview of your Fuel Pass. The final image will be exported exactly as shown.",
+    developedBy: "Developed by",
+    howToGetQr: "How to get QR",
+    closeBtn: "Close Guide"
+  },
+  si: {
+    title: "ඉන්ධන අවසරපත් ජනකය",
+    subtitle: "ඔබගේ ඩිජිටල් ඉන්ධන අවසරපත ක්ෂණිකව සාදන්න",
+    vehicleLabel: "වාහන අංකය",
+    vehiclePlaceholder: "උදා: WP CAA 1234",
+    qrLabel: "QR කේතය",
+    clickToUpload: "උඩුගත කිරීමට ක්ලික් කරන්න",
+    dragDrop: "හෝ ඇදගෙන දමන්න",
+    supportedFormats: "PNG, JPG හෝ JPEG",
+    downloadBtn: "බාගත කරන්න (PNG)",
+    shareBtn: "බෙදාගන්න",
+    digitalWallets: "ඩිජිටල් පසුම්බි (නොමැත)",
+    appleWallet: "Apple Wallet වෙත එක් කරන්න",
+    googleWallet: "Google Wallet වෙත එක් කරන්න",
+    previewText: "ඔබගේ ඉන්ධන අවසරපතෙහි සජීවී පෙරදසුන. නිර්මාණය කෙරෙන්නේ පෙන්වා ඇති ආකාරයටමය.",
+    developedBy: "නිර්මාණය",
+    howToGetQr: "QR ලබා ගන්නේ කෙසේද",
+    closeBtn: "වසා දමන්න"
+  },
+  ta: {
+    title: "எரிபொருள் பாஸ் உருவாக்கி",
+    subtitle: "உங்கள் டிஜிட்டல் எரிபொருள் பாஸை உடனடியாக உருவாக்கவும்",
+    vehicleLabel: "வாகன எண்",
+    vehiclePlaceholder: "உ.ம்: WP CAA 1234",
+    qrLabel: "QR குறியீடு",
+    clickToUpload: "பதிவேற்ற கிளிக் செய்யவும்",
+    dragDrop: "அல்லது இழுத்து விடவும்",
+    supportedFormats: "PNG, JPG அல்லது JPEG",
+    downloadBtn: "பாஸை பதிவிறக்கவும் (PNG)",
+    shareBtn: "பாஸை பகிரவும்",
+    digitalWallets: "டிஜிட்டல் வாலட்கள் (கிடைக்கவில்லை)",
+    appleWallet: "Apple Wallet இல் சேர்க்கவும்",
+    googleWallet: "Google Wallet இல் சேர்க்கவும்",
+    previewText: "உங்கள் எரிபொருள் பாஸின் நேரடி முன்னோட்டம். இறுதி படம் காட்டப்பட்டுள்ளபடி சரியாக ஏற்றுமதி செய்யப்படும்.",
+    developedBy: "உருவாக்கியவர்",
+    howToGetQr: "QR பெறுவது எப்படி",
+    closeBtn: "மூடு"
+  }
+};
