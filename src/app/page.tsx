@@ -50,45 +50,11 @@ export default function Home() {
   };
 
   const addToAppleWallet = async () => {
-    setWalletLoading('apple');
-    try {
-      const res = await fetch('/api/apple-wallet', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ vehicleNumber, qrCodeUrl: qrCodeUrl || '' })
-      });
-      if (!res.ok) throw new Error("Failed to generate pass");
-      const blob = await res.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `FuelPass-${vehicleNumber || 'Card'}.pkpass`;
-      link.click();
-    } catch (err) {
-      alert("Apple Wallet Generation Failed: " + (err instanceof Error ? err.message : String(err)));
-    } finally {
-      setWalletLoading(null);
-    }
+    alert("Currently not available");
   };
 
   const addToGoogleWallet = async () => {
-    setWalletLoading('google');
-    try {
-      const res = await fetch('/api/google-wallet', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ vehicleNumber, qrCodeUrl: qrCodeUrl || '' })
-      });
-      if (!res.ok) throw new Error("Failed to generate JWT");
-      const data = await res.json();
-      if (data.url) {
-        window.open(data.url, '_blank');
-      }
-    } catch (err) {
-      alert("Google Wallet Generation Failed: " + (err instanceof Error ? err.message : String(err)));
-    } finally {
-      setWalletLoading(null);
-    }
+    alert("Currently not available");
   };
 
   return (
@@ -165,21 +131,19 @@ export default function Home() {
               <Share2 size={18} /> Share Pass
             </button>
 
-            <div className="pt-6 mt-4 space-y-3 border-t border-border">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3 px-1">Digital Wallets</h3>
+            <div className="pt-6 mt-4 space-y-3 border-t border-border opacity-60">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3 px-1">Digital Wallets (Unavailable)</h3>
               <button 
                  onClick={addToAppleWallet}
-                 disabled={walletLoading !== null}
-                 className="w-full flex items-center justify-center gap-2 bg-black dark:bg-gray-800 text-white hover:bg-black/90 dark:hover:bg-gray-700 py-3 rounded-xl font-medium transition-all shadow-sm"
+                 className="w-full flex items-center justify-center gap-2 bg-black dark:bg-gray-800 text-white py-3 rounded-xl font-medium transition-all shadow-sm cursor-not-allowed"
               >
-                <Smartphone size={18} /> {walletLoading === 'apple' ? 'Generating...' : 'Add to Apple Wallet'}
+                <Smartphone size={18} /> Add to Apple Wallet
               </button>
               <button 
                  onClick={addToGoogleWallet}
-                 disabled={walletLoading !== null}
-                 className="w-full flex items-center justify-center gap-2 bg-[#4285F4] hover:bg-[#3367d6] text-white py-3 rounded-xl font-medium transition-all shadow-sm"
+                 className="w-full flex items-center justify-center gap-2 bg-[#4285F4] text-white py-3 rounded-xl font-medium transition-all shadow-sm cursor-not-allowed"
               >
-                <Smartphone size={18} /> {walletLoading === 'google' ? 'Generating...' : 'Add to Google Wallet'}
+                <Smartphone size={18} /> Add to Google Wallet
               </button>
             </div>
           </div>
