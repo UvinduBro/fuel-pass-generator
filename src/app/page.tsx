@@ -117,15 +117,16 @@ export default function Home() {
             </div>
 
             <div className="space-y-2">
-              <div className="flex justify-between items-end">
+              <div className="flex justify-between items-end mb-2">
                 <label className="text-sm font-semibold text-foreground/90">
                   {t.qrLabel}
                 </label>
                 <button 
                   onClick={() => setIsGuideOpen(true)}
-                  className="text-xs text-red-500 hover:text-red-600 font-semibold hover:underline flex items-center gap-1"
+                  className="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 font-bold px-3 py-1.5 rounded-full hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors flex items-center gap-1.5 shadow-sm"
                 >
-                  {t.howToGetQr} ?
+                  <span className="w-4 h-4 rounded-full bg-red-500 text-white flex items-center justify-center text-[10px]">?</span>
+                  {t.howToGetQr}
                 </button>
               </div>
               <div 

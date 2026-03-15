@@ -31,25 +31,14 @@ export function GuideModal({ isOpen, onClose, lang }: GuideModalProps) {
         </div>
 
         <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-background space-y-6">
-          <p className="text-sm text-muted-foreground mb-4">
-            Follow the guide below in your preferred language to obtain your National Fuel Pass QR code from fuelpass.gov.lk.
+          <p className="text-sm text-muted-foreground mb-4 text-center">
+            {t.subtitle}
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-             <div className="flex flex-col items-center space-y-2">
-               <span className="font-semibold text-sm bg-primary/10 text-primary px-3 py-1 rounded-full">English</span>
-               <img src="/NFP-E.jpg" alt="English Guide" className="w-full rounded-xl border border-border shadow-sm" />
-             </div>
-             
-             <div className="flex flex-col items-center space-y-2">
-               <span className="font-semibold text-sm bg-primary/10 text-primary px-3 py-1 rounded-full">සිංහල</span>
-               <img src="/NFP-S.jpg" alt="Sinhala Guide" className="w-full rounded-xl border border-border shadow-sm" />
-             </div>
-
-             <div className="flex flex-col items-center space-y-2">
-               <span className="font-semibold text-sm bg-primary/10 text-primary px-3 py-1 rounded-full">தமிழ்</span>
-               <img src="/NFP-T.jpg" alt="Tamil Guide" className="w-full rounded-xl border border-border shadow-sm" />
-             </div>
+          <div className="flex flex-col items-center max-w-2xl mx-auto border rounded-xl overflow-hidden shadow-sm">
+             {lang === 'en' && <img src="/NFP-E.jpg" alt="English Guide" className="w-full object-contain" />}
+             {lang === 'si' && <img src="/NFP-S.jpg" alt="Sinhala Guide" className="w-full object-contain" />}
+             {lang === 'ta' && <img src="/NFP-T.jpg" alt="Tamil Guide" className="w-full object-contain" />}
           </div>
           
           <div className="mt-8 flex justify-center">
